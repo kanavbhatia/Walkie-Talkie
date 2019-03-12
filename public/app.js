@@ -1,5 +1,5 @@
-let input = document.getElementById('inp');
-let button = document.getElementById('start');
+// let input = document.getElementById('inp');
+let button1 = document.getElementById('start');
 let button2 = document.getElementById('stop');
 let result = document.getElementById('res');
 var socket = io();
@@ -45,55 +45,27 @@ navigator.mediaDevices.getUserMedia({ audio: true })
     .then(stream => {
         const mediaRecorder = new MediaRecorder(stream);
         var audioChunks = [];
-        $("start").click(function (e) {
+        button1.click(function () {
             // if (checker== true){
               mediaRecorder.start();
+              console.log('Start button pressed')
             //   checker = false
             // $(this).toggleClass("paused");  
-            },
-            $("stop").click(function (e) {
+            }),
+            button2.click(function () {
                 mediaRecorder.stop();
+                console.log('Stop button pressed')
+                socket.broadcast.emit('audioMessage', audioChunks);
+                socket.emit('audioMessage', audioChunks);
+                audioChunks = [];
                 // checker = true
-            }
-            
         });
         mediaRecorder.addEventListener("dataavailable", event => {
             audioChunks.push(event.data);
         });
         mediaRecorder.addEventListener("stop", () => {
-            socket.broadcast.emit('audioMessage', audioChunks);
-            socket.emit('audioMessage', audioChunks);
-            audioChunks = [];
+            // socket.broadcast.emit('audioMessage', audioChunks);
+            // socket.emit('audioMessage', audioChunks);
+            // audioChunks = [];
         });
     });
-
-socket.on('audioMessage', function (audioChunks) {
-    const audioBlob = new Blob(audioChunks);
-    const audioUrl = URL.createObjectURL(audioBlob);
-    const audio = new Audio(audioUrl);
-    audio.play();
-});
-socket.on('user', function (usercount) {
-    $('.usercount').text(usercount)
-});
-navigator.mediaDevices.getUserMedia({ audio: true })
-    .then(stream => {
-        const mediaRecorder = new MediaRecorder(stream);
-        var audioChunks = [];
-        ("start").click(function (e) {
-            mediaRecorder.start();});
-            // $(this).toggleClass("paused");
-        })
-            ("stop").click(function (e) {
-                mediaRecorder.stop();
-                $(this).toggleClass("paused");
-            });
-        mediaRecorder.addEventListener("dataavailable", event => {
-            audioChunks.push(event.data);
-        });
-        mediaRecorder.addEventListener("stop", () => {
-            //socket.broadcast.emit('audioMessage', audioChunks);
-            socket.emit('audioMessage', audioChunks);
-            audioChunks = [];
-        });
-    }

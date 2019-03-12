@@ -1,0 +1,45 @@
+*{
+    margin: 0px
+}
+#main{
+    background-color: green;
+    height: 55vw;
+    width: 100vw;
+}
+#semi1{
+    background-color: red;
+    width: 33%;
+    height: 30vw;
+    display: inline-block;
+    vertical-align:top;
+}
+#semi2{
+    background-color: blue;
+    width: 33%;
+    height: 30vw;
+    display: inline-block;
+    vertical-align:top;
+    /* position: absolute; */
+}
+#semi3{
+    background-color: yellow;
+    width: 33%;
+    height: 30vw;
+    display: inline-block;
+    vertical-align:top; 
+}
+#upper{
+    background-color: orange;
+    /* width: 33%; */
+    height: 10vw;
+    /* display: inline-block;
+    vertical-align:  */
+}
+#headset{
+    background-color: black;
+    height: 30%;
+    width:30%;
+    position: relative;
+    margin: auto;
+    top: 20%;
+}

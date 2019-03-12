@@ -1,4 +1,4 @@
-/* *{
+*{
     margin: 0em;
 }
 #box1{
@@ -13,8 +13,8 @@
     height: 50vw;
     display: inline-block;
     background-color: olivedrab;
-} */
-@import url("https://fonts.googleapis.com/css?family=Roboto:300");
+}
+/* @import url("https://fonts.googleapis.com/css?family=Roboto:300");
 body {
     background-color: #c0392b;
     font-family: 'Roboto', sans-serif;
@@ -86,4 +86,4 @@ h1 {
 .paused .triangle-2 {
     -webkit-transform: translate(0, 50%);
     transform: translate(0, 50%);
-}
+} */
